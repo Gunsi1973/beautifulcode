@@ -82,20 +82,22 @@ def Passwort_generieren(length):
 
 length_pass = int(input("Please enter your desired password length: "))
 
-input1 = input("Would you like your Password to contain 'Uppercase'? ")
-input2 = input("Would you like your Password to contain 'Digets'? ")
-input3 = input("Would you like your Password to contain 'Punctuation'? ")
+input1 = input("Would you like your Password to contain 'Uppercase'? (Please anwser with 'yes' or 'y') ")
+input2 = input("Would you like your Password to contain 'Digets'? (Please anwser with 'yes' or 'y') ")
+input3 = input("Would you like your Password to contain 'Punctuation'? (Please anwser with 'yes' or 'y') ")
 
-f_uppercase = True if input1 == "Yes" or input1 == "yes" else False
-f_digets = True if input2 == "Yes" or input2 == "yes" else False
-f_punctuation = True if input3 == "Yes" or input3 == "yes" else False
+f_uppercase = True if input1 == "y" or input1 == "yes" else False
+f_digets = True if input2 == "y" or input2 == "yes" else False
+f_punctuation = True if input3 == "y" or input3 == "yes" else False
 
-result = zxcvbn(Passwort_generieren(length_pass))
-print(result)
+the_password = Passwort_generieren(length_pass)
+result = zxcvbn(the_password)
 crack_times = result['crack_times_seconds']
 
-print(f"Your generated Password is ---> {Passwort_generieren(length_pass)}")
+print(f"Your generated Password is ---> {the_password}")
 print(f"Score: {result['score']}")
 print(f"Offline Attack (1,000 guesses/second): {convert_seconds_to_readable(round(crack_times['offline_slow_hashing_1e4_per_second']))}")
-        
+
+random.seed()
+       
 

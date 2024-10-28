@@ -3,7 +3,7 @@ from vektorklasse import Vec, pol2cart_noradians
 import math
 
 pg.init()
-resolution = Vec(1000,1000)
+resolution = Vec(500,500)
 screen = pg.display.set_mode(resolution)
 center = resolution / 2
 radius = min(resolution * 0.4)
